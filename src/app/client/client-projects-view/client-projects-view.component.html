@@ -1,0 +1,66 @@
+<div fxLayout="row" *appShowAuthed="true">
+  <div fxFlex.gt-sm="100%">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title
+          >{{ project.title }}
+          <span class="label label-rounded label-light-info">{{
+            project.status
+          }}</span></mat-card-title
+        >
+        <p>{{ project.description }}</p>
+        <p><strong>Location:</strong> {{ project.location }}</p>
+        <p>
+          <strong>Dates:</strong> {{ project.startDateTime | date: "EEEE, MMMM d, y @ H:mm" }} to
+          {{ project.endDateTime | date: "EEEE, MMMM d, y @ H:mm" }}
+        </p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let keyword of project.keywords">{{ keyword.value }}</mat-chip>
+        </mat-chip-list>
+        <mat-card-actions>
+          <button
+            mat-button
+            *ngIf="project.status === 'NEW'"
+            color="primary"
+            [routerLink]="['/client/projects', project.id]"
+          >
+            Edit
+          </button>
+          <button
+            mat-button
+            *ngIf="project.status === 'SCHEDULED'"
+            color="primary"
+            (click)="start(project)"
+          >
+            Start
+          </button>
+          <button
+            mat-button
+            *ngIf="project.status === 'STARTED'"
+            color="primary"
+            (click)="finish(project)"
+          >
+            Finish
+          </button>
+          <button
+            mat-button
+            *ngIf="project.status === 'FINISHED'"
+            color="primary"
+            (click)="archive(project)"
+          >
+            Archive
+          </button>
+          <button
+            mat-button
+            *ngIf="project.status === 'NEW'"
+            color="warn"
+            (click)="cancel(project)"
+          >
+            Cancel
+          </button>
+          <button mat-button routerLink="/client/projects">Back</button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

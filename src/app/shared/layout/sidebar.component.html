@@ -1,0 +1,85 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<div
+  class="user-profile"
+  style="background: url(assets/images/background/user-info.jpg) no-repeat;"
+>
+  <!-- User profile image -->
+  <div class="profile-img"><img src="assets/images/users/profile.png" alt="user" /></div>
+  <!-- User profile text-->
+  <!-- ============================================================== -->
+  <!-- Profile - style you can find in header.scss -->
+  <!-- ============================================================== -->
+  <div class="profile-text">
+    <a [matMenuTriggerFor]="sdprofile" class="">
+      {{ currentUser.username }} <i class="ti-angle-down font-12 m-l-5"></i>
+    </a>
+  </div>
+  <mat-menu #sdprofile="matMenu" class="mymegamenu">
+    <button mat-menu-item><mat-icon>settings</mat-icon> Settings</button>
+    <button mat-menu-item><mat-icon>account_box</mat-icon> Profile</button>
+    <button mat-menu-item><mat-icon>notifications_off</mat-icon> Disable notifications</button>
+    <button mat-menu-item><mat-icon>exit_to_app</mat-icon> Sign Out</button>
+  </mat-menu>
+</div>
+
+<mat-nav-list *appShowAuthed="false">
+  <!-- Login -->
+  <mat-list-item routerLinkActive="selected" group="login">
+    <a class="" routerLink="/login">
+      <mat-icon>fingerprint</mat-icon>
+      <span>Login</span> <span fxFlex></span>
+    </a>
+  </mat-list-item>
+
+  <!-- Register -->
+  <mat-list-item routerLinkActive="selected" group="register">
+    <a class="" routerLink="/register">
+      <mat-icon>person_add</mat-icon>
+      <span>Register</span> <span fxFlex></span>
+    </a>
+  </mat-list-item>
+
+  <!-- Help -->
+  <mat-list-item routerLinkActive="selected" group="help">
+    <a class="" routerLink="/help">
+      <mat-icon>help</mat-icon>
+      <span>Help</span> <span fxFlex></span>
+    </a>
+  </mat-list-item>
+</mat-nav-list>
+
+<mat-nav-list *appShowAuthed="true">
+  <!-- Home -->
+  <mat-list-item routerLinkActive="selected" group="home">
+    <a class="" routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>Home</span> <span fxFlex></span>
+    </a>
+  </mat-list-item>
+
+  <!-- List Projects -->
+  <mat-list-item routerLinkActive="selected" group="client_projects">
+    <a class="" routerLink="/client/projects">
+      <mat-icon>format_list_bulleted</mat-icon>
+      <span>Projects</span> <span fxFlex></span>
+    </a>
+  </mat-list-item>
+
+  <!-- Create Project -->
+  <mat-list-item routerLinkActive="selected" group="client_projects_create">
+    <a class="" routerLink="/client/projects/create">
+      <mat-icon>add_circle_outline</mat-icon>
+      <span>Post a Project</span> <span fxFlex></span>
+    </a>
+  </mat-list-item>
+
+  <!-- Help -->
+  <mat-list-item routerLinkActive="selected" group="help">
+    <a class="" routerLink="/help">
+      <mat-icon>help</mat-icon>
+      <span>Help</span> <span fxFlex></span>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

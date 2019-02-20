@@ -1,0 +1,22 @@
+<div fxLayout="row" *appShowAuthed="true">
+  <div fxFlex.gt-sm="100%">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>Projects</mat-card-title>
+        <mat-card-subtitle>Your current projects.</mat-card-subtitle>
+        <mat-list>
+          <mat-list-item *ngFor="let project of (projects | async)">
+            <h3 matLine>{{ project.title }}</h3>
+            <p matLine class="text-muted">{{ project.description }}</p>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <a mat-menu-item [routerLink]="['/client/projects/', project.id]">View</a>
+            </mat-menu>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
